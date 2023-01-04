@@ -1,0 +1,17 @@
+[[language]]
+name = "python"
+roots = ["pyproject.toml", "pyrightconfig.json"]
+language-server = { command = "pyright-langserver", args = ["--stdio"] }
+formatter = { command = "black", args = ["-"] }
+auto-format = true
+config = """
+{
+  "python": {
+    "analysis": {
+      "autoSearchPaths": true,
+      "diagnosticMode": "workspace",
+      "useLibraryCodeForTypes": true
+    }
+  }
+}
+"""
