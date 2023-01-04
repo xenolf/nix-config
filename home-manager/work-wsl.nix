@@ -11,6 +11,7 @@ in
     ./nvim.nix
     ./lazygit.nix
     ./helix.nix
+    ./gh.nix
   ];
 
   nixpkgs = {
@@ -29,7 +30,6 @@ in
       unstable.helix # Home-manager requires 'pkgs' instance
       pkgs.nodejs
       pkgs.gcc
-      pkgs.gh
       pkgs.nix-prefetch-scripts
       pkgs.dig
     ];
