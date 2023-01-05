@@ -10,15 +10,18 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    # Nixgl
+    nixgl.url = "github:guibou/nixGL";
+    nixgl.inputs.nixpkgs.follows = "nixpkgs-unstable";
+
+    # Devenv
+    devenv.url = "github:cachix/devenv/v0.5";
+
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
-
-    # Shameless plug: looking for a way to nixify your themes and make
-    # everything match nicely? Try nix-colors!
-    # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, home-manager, nixpkgs-unstable, ... }@inputs: 
+  outputs = { self, nixpkgs, home-manager, nixpkgs-unstable, nixgl, devenv, ... }@inputs: 
     let
       inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs [
@@ -64,6 +67,12 @@
           extraSpecialArgs = { inherit inputs outputs nixpkgs-unstable; }; # Pass flake inputs to our config
           # > Our main home-manager configuration file <
           modules = [ ./home-manager/work-wsl.nix ];
+        };
+
+        "azhwkd@hwk-fed-00" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = { inherit inputs outputs nixpkgs-unstable nixgl devenv; };
+          modules = [ ./home-manager/home-desktop.nix ];
         };
       };
     };
