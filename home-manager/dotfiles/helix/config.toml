@@ -4,6 +4,7 @@ theme = "catppuccin_mocha"
 cursorline = true
 color-modes = true
 bufferline = "multiple"
+true-color = true
 
 [editor.statusline]
 left = ["mode", "spinner", "file-name", "diagnostics"]

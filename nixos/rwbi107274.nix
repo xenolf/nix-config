@@ -12,6 +12,7 @@ in
   ];
 
   networking.hostName = "RWBI107274";
+  services.vscode-server.enable = true;
 
   wsl = {
     enable = true;
@@ -83,6 +84,7 @@ in
   environment.systemPackages = with pkgs; [
     git
     unzip
+    wget
   ];
 
   # Enable nix flakes

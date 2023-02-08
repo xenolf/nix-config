@@ -1,6 +1,7 @@
-{ input, lib, config, pkgs, nixpkgs-unstable, ... }:
+{ input, lib, config, pkgs, nixpkgs-unstable, devenv, ... }:
 let 
   unstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
+  devpkgs = devenv.packages.x86_64-linux;
 in
 {
   imports = [
@@ -27,11 +28,18 @@ in
     homeDirectory = "/home/nixos";
     packages = [
       pkgs.ripgrep
-      unstable.helix # Home-manager requires 'pkgs' instance
+      unstable.helix
+      devpkgs.devenv
       pkgs.nodejs
       pkgs.gcc
       pkgs.nix-prefetch-scripts
       pkgs.dig
+      pkgs.dotnet-sdk
+      pkgs.omnisharp-roslyn
+      pkgs.python3
+      pkgs.python310Packages.pip
+      pkgs.pipenv
+      pkgs.cryptsetup
     ];
   };
 
