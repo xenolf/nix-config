@@ -54,6 +54,8 @@ in
       pkgs.nixgl.auto.nixGLDefault
       unstable.helix
       devpkgs.devenv
+      pkgs.nodePackages.yarn
+      pkgs.step-cli
     ];
   };
 

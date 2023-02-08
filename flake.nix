@@ -17,7 +17,7 @@
     nixgl.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     # Devenv
-    devenv.url = "github:cachix/devenv/v0.5";
+    devenv.url = "github:cachix/devenv/v0.5.1";
 
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
