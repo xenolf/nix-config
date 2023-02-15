@@ -40,6 +40,7 @@ in
       pkgs.python310Packages.pip
       pkgs.pipenv
       pkgs.cryptsetup
+      pkgs.mtr
     ];
   };
 
